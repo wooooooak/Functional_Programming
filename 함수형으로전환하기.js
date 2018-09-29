@@ -40,6 +40,15 @@ for (let i = 0; i < temp_users.length; i++) {
 console.log(ages);
 
 //  _filter, _map으로 리팩토링
+const _filter = (users, predi) => {
+  let new_list = [];
+  for (let i = 0; i < users.length; i++) {
+    if (predi(users[i])) {
+      new_list.push(users[i]);
+    }
+  }
+  return new_list;
+};
 
 // call은 바로 호출하는 것이고 bind는 호출 하지 않고 this만 새로 지정한 함수를 반환
 function _rest (list, num = 1) {
@@ -117,3 +126,32 @@ _go(
 // filter와 map의 인자로 함수만 주게 되면, 두번째 인자로 배열이 들어와야 하는데,
 // _go의 첫번째 인자인 users가 차례대로 들어가기 때문에 가능하다
 _go(users, _filter((user) => user.age >= 30), _map(_get("name")), console.log);
+
+// _each의 외부 다형성 높이기
+//   1. _each에 null 넣어도 에러 안나게
+_each(null, console.log);
+_map(null, (v) => v);
+
+//   2. _keys 만들기
+//   3. _keys에서도 _is_object인지 검사하여 null 에러 안나게
+console.log(Object.keys({ name: "id", age: "33" }));
+console.log(Object.keys(null)); // error
+
+function _is_object (obj) {
+  return typeof obj == "object" && !!obj;
+}
+
+function _keys (obj) {
+  return _is_object(obj) ? Object.keys(obj) : [];
+}
+
+_each(
+  {
+    13: "Id",
+    19: "ead",
+    29: "yd"
+  },
+  (name) => {
+    console.log(name);
+  }
+);

@@ -49,7 +49,7 @@ function _keys (obj) {
 var _length = _get("length");
 
 function _each (list, iter) {
-  var keys = _keys(list);
+  var keys = _keys(list); // 배열이 들어와도 keys가 뽑히고 배열이 아니라도 뽑힘
   for (var i = 0, len = keys.length; i < len; i++) {
     iter(list[keys[i]], keys[i]);
   }
