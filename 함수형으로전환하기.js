@@ -1,3 +1,5 @@
+const { _map } = require("./_");
+
 const users = [
   { id: 1, name: "ID", age: 36 },
   { id: 2, name: "BJ", age: 32 },

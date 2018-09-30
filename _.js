@@ -177,3 +177,5 @@ var _count_by = _curryr(function (data, iter) {
 var _head = function (list) {
   return list[0];
 };
+
+module.exports = { _map };
