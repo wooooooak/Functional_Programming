@@ -38,6 +38,18 @@ class Person {
     this._address = addr;
   }
 
+  // 객체지향적으로 거주 국가가 같은 사람을 찾는 메서드
+  peopleInSameCountry(friends) {
+    let result = [];
+    for (let idx in friends) {
+      const friends = friends[idx];
+      if (this.address.country === friends.address.country) {
+        result.push(friends);
+      }
+    }
+    return result;
+  }
+
   toString() {
     return `Person(${this._firstname}, ${this._lastname})`;
   }
